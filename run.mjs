@@ -27,6 +27,7 @@ const launchOptions = process.env.CHROME_PATH
 	? {executablePath: process.env.CHROME_PATH}
 	: {channel: 'chrome'};
 const browser = await chromium.launch({...launchOptions, headless: true});
+console.log(`Browser: ${browser.version()}`);
 const page = await browser.newPage();
 
 try {

@@ -24,7 +24,7 @@ const run = async () => {
 		throw new Error('2D canvas is unavailable');
 	}
 
-	for (let frameIndex = 0; frameIndex < 30; frameIndex++) {
+	for (let frameIndex = 0; frameIndex < 1; frameIndex++) {
 		context.fillStyle = frameIndex % 2 === 0 ? 'red' : 'blue';
 		context.fillRect(0, 0, canvas.width, canvas.height);
 

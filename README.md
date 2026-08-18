@@ -1,7 +1,7 @@
 # Mediabunny AVC quantizer repro
 
 This reproduces a Mediabunny 1.55.1 AVC encoding failure on GitHub's
-`macos-latest` runner. It creates an MP4 from 30 synthetic `VideoFrame`s using
+`macos-latest` runner. It creates an MP4 from one synthetic `VideoFrame` using
 `QUALITY_MEDIUM`.
 
 ```sh

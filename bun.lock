@@ -1,0 +1,26 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "mediabunny-avc-quantizer-repro",
+      "dependencies": {
+        "mediabunny": "1.55.1",
+        "playwright": "1.62.1",
+      },
+    },
+  },
+  "packages": {
+    "@types/dom-mediacapture-transform": ["@types/dom-mediacapture-transform@0.1.12", "", { "dependencies": { "@types/dom-webcodecs": "*" } }, "sha512-d7/QsLRwF864A5mgIM/YrfiglHoYn7zgCcAoJgW404r+2DwnNr7EBbLnCWpmOMgH8y0te73L1AV6H1bmauaWFw=="],
+
+    "@types/dom-webcodecs": ["@types/dom-webcodecs@0.1.13", "", {}, "sha512-O5hkiFIcjjszPIYyUSyvScyvrBoV3NOEEZx/pMlsu44TKzWNkLVBBxnxJz42in5n3QIolYOcBYFCPZZ0h8SkwQ=="],
+
+    "fsevents": ["fsevents@2.3.2", "", { "os": "darwin" }, "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="],
+
+    "mediabunny": ["mediabunny@1.55.1", "", { "dependencies": { "@types/dom-mediacapture-transform": "^0.1.11", "@types/dom-webcodecs": "0.1.13" } }, "sha512-JDdTEUOw9g6Ey8eWc2Ei63GmRGtGTJoE56SE7CHikwzS8i9xpsWcve4bEiUw47d4j49L3r7MXDFsH/5oZIhjBw=="],
+
+    "playwright": ["playwright@1.62.1", "", { "dependencies": { "playwright-core": "1.62.1" }, "optionalDependencies": { "fsevents": "2.3.2" }, "bin": { "playwright": "cli.js" } }, "sha512-0M+L3LAD8/nm554LOla9Ayx0j0tmFZ0FBcoQ7F1VuVHpM/XpiC8RcDzBQB8W5+hA8L22THxELzeF+2WcUzvcLg=="],
+
+    "playwright-core": ["playwright-core@1.62.1", "", { "bin": { "playwright-core": "cli.js" } }, "sha512-wPYSwEBJY9GHraISXqyqtx0na0LpO3XEX7jNDhntbex7tzUS7kLnZsOlFruFJB4Hi/rhDMjXGqHewDZ68nYZVw=="],
+  }
+}

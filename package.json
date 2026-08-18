@@ -1,0 +1,13 @@
+{
+	"name": "mediabunny-avc-quantizer-repro",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "bun build browser.ts --outdir=dist --target=browser",
+		"repro": "bun run build && node run.mjs"
+	},
+	"dependencies": {
+		"mediabunny": "1.55.1",
+		"playwright": "1.62.1"
+	}
+}

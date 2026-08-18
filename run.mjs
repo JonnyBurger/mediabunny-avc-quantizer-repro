@@ -31,10 +31,10 @@ const page = await browser.newPage();
 
 try {
 	await page.goto(`http://127.0.0.1:${address.port}`);
-	await page.waitForFunction(() => window.__mediabunnyResults !== undefined);
-	const results = await page.evaluate(() => window.__mediabunnyResults);
-	console.log(JSON.stringify(results, null, 2));
-	if (Array.isArray(results) && results.some((result) => !result.ok)) {
+	await page.waitForFunction(() => window.__mediabunnyResult !== undefined);
+	const result = await page.evaluate(() => window.__mediabunnyResult);
+	console.log(JSON.stringify(result, null, 2));
+	if (result.error) {
 		process.exitCode = 1;
 	}
 } finally {

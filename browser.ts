@@ -2,22 +2,18 @@ import {
 	BufferTarget,
 	Mp4OutputFormat,
 	Output,
-	Quality,
 	QUALITY_MEDIUM,
 	VideoSample,
 	VideoSampleSource,
 } from 'mediabunny';
 
-type Mode = 'automatic-quantizer' | 'forced-bitrate';
-
-const encode = async (mode: Mode) => {
-	const quality =
-		mode === 'automatic-quantizer'
-			? QUALITY_MEDIUM
-			: new Quality({quality: 'medium', preferBitrate: true});
+const run = async () => {
 	const target = new BufferTarget();
 	const output = new Output({format: new Mp4OutputFormat(), target});
-	const source = new VideoSampleSource({codec: 'avc', bitrate: quality});
+	const source = new VideoSampleSource({
+		codec: 'avc',
+		bitrate: QUALITY_MEDIUM,
+	});
 
 	output.addVideoTrack(source);
 	await output.start();
@@ -51,29 +47,21 @@ const encode = async (mode: Mode) => {
 	return target.buffer?.byteLength ?? 0;
 };
 
-const run = async () => {
-	const results = [];
-
-	for (const mode of ['automatic-quantizer', 'forced-bitrate'] as const) {
-		try {
-			results.push({mode, ok: true, bytes: await encode(mode)});
-		} catch (error) {
-			results.push({
-				mode,
-				ok: false,
-				error: error instanceof Error ? `${error.name}: ${error.message}` : String(error),
-			});
-		}
-	}
-
-	window.__mediabunnyResults = results;
-	document.body.textContent = JSON.stringify(results, null, 2);
-};
-
 declare global {
 	interface Window {
-		__mediabunnyResults?: unknown;
+		__mediabunnyResult?: {bytes?: number; error?: string};
 	}
 }
 
-void run();
+run()
+	.then((bytes) => {
+		window.__mediabunnyResult = {bytes};
+	})
+	.catch((error) => {
+		window.__mediabunnyResult = {
+			error:
+				error instanceof Error
+					? `${error.name}: ${error.message}`
+					: String(error),
+		};
+	});
